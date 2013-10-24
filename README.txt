@@ -1,12 +1,12 @@
-//EJEMPLO FUNCIONES
+//EJEMPLO
 
 $(document).ready(function(){
 var lat = 19.4969617;
 var lon =  -99.2434079;
 var $mapaShow = $("#mapa");
 	$mapaShow.mapa({rol:'busqueda',
-		width:$(document).width() -5,
-		height:$(document).height() -5,
+		width:$(document).width(), 
+		height:$(document).height(),
 		zoom:14,
 		longitud:lon,
 		latitud:lat,

@@ -1,3 +1,9 @@
+/*
+Autor: Arturo Arista R. (xaristax)
+Fecha: 2013
+Licencia: GNU General Public License
+*/
+
 (function($){
 	$.fn.extend({
 		mapa : function(parametros){
@@ -18,13 +24,13 @@
 			'lock1' : false,
 			'lock2' : false,
 			'loaderIMG' : 'loader.gif',
-			'video' : {'activo':false,
-						'velocidad':100,
-						'distancia':5,
-						'autoplay':false,
-						'pausaIMG':false,
-						'playIMG':false,
-						'stopIMG':false}
+			'videoActivo' :false,
+			'videoVelocidad':100,
+			'videoDistancia':5,
+			'videoAutoplay':false,
+			'videoPausaIMG':false,
+			'videoPlayIMG':false,
+			'videoStopIMG':false
 			}
 		var param = $.extend(variables,parametros);
 		var $elemento = $(this);
@@ -65,7 +71,7 @@
 			}
 			var $pasos = $("<div id='pasosMapa'><input id='puntoA' type='text' value='"+param.addr1+"' "+keyLock1+" /><input id='puntoB' type='text' value='"+param.mascara+"' name='"+param.addr2+"' "+keyLock2+" /><input id='buscarRuta' type='button' value='Buscar Ruta' /></div>");
 			var $loader = $("<div id='loaderMAPSX' style='position:absolute;bottom:15px;right:10px;z-index:9;display:none' ><img src='"+param.loaderIMG+"' />'</div>");
-			var $pano = $("<div id='pano' style='position:absolute;z-index:10;display:none'><div id='controlesMAPSX' style='position:absolute;bottom:10px;right:5px'><img id='pausaBTNMAPSX' style='width:25px;margin-right:5px;cursor:pointer' src='"+param.video.pausaIMG+"' /><img id='playBTNMAPSX' style='width:25px;margin-right:5px;cursor:pointer' src='"+param.video.playIMG+"' /><img id='stopBTNMAPSX' style='width:25px;margin-right:5px;cursor:pointer' src='"+param.video.stopIMG+"' /></div></div>");
+			var $pano = $("<div id='pano' style='position:absolute;z-index:10;display:none'><div id='controlesMAPSX' style='position:absolute;bottom:10px;right:5px'><img id='pausaBTNMAPSX' style='width:25px;margin-right:5px;cursor:pointer' src='"+param.videoPausaIMG+"' /><img id='playBTNMAPSX' style='width:25px;margin-right:5px;cursor:pointer' src='"+param.videoPlayIMG+"' /><img id='stopBTNMAPSX' style='width:25px;margin-right:5px;cursor:pointer' src='"+param.videoStopIMG+"' /></div></div>");
 			$pasos.find("input[type='text']").css({'width':'80%','display':'block','margin':'10px auto','padding':5});
 			$pasos.find("input[type='button']").css({'width':'50%','display':'block','margin':'5px auto','color':'#FFF','backgroundColor':'#4387f4','border':'solid 2px #43a3f4'});
 			$pasos.css({'width':'40%','height':'100%','backgroundColor':'#efefef','float':'left',overflow:'auto'});
@@ -147,7 +153,7 @@
 				ALON = response.routes[0].legs[0].start_location.mb;
 				BLAT = response.routes[0].legs[0].end_location.lb;
 				BLON = response.routes[0].legs[0].end_location.mb;
-					if(param.video.activo === true){
+					if(param.videoActivo === true){
 						$loader.css('display','block');
 						if($("#loaderMAPSX").length > 0){
 						$loader.html("<img src='"+param.loaderIMG+"' />");
@@ -176,8 +182,8 @@
 				height:param.height,
 				use_lookat: false,
 				elevation: 50,
-				distance_between_points:param.video.distancia,
-				millis:param.video.velocidad
+				distance_between_points:param.videoDistancia,
+				millis:param.videoVelocidad
 			});
 			
 			hyperlapse.onError = function(e) {
@@ -191,7 +197,7 @@
 			hyperlapse.onLoadComplete = function(e) {
 				$loader.html("<input id='videoBTNMAPSX' type='button' value='Ver Video' />");
 				$loader.find("input[type='button']").css({'display':'block','margin':'5px auto','color':'#FFF','backgroundColor':'#4387f4','border':'solid 2px #43a3f4'});
-					if(param.video.autoplay === true){
+					if(param.videoAutoplay === true){
 					$pano.css({'display':'block',opacity:0});
 					$pano.animate({opacity:1},500);
 					}

@@ -12,14 +12,13 @@ var $mapaShow = $("#mapa");
 		'addr2':'Colina de jades 1 col boulevares naucalpan',
 		lock2:true,
 		loaderIMG:'img/loader.gif',
-			'video':{'activo':true,
-			'velocidad':200,
-			'distancia':5,
-			'autoplay' : true,
-			'pausaIMG' : 'img/pausa.png',
-			'playIMG' : 'img/play.png',
-			'stopIMG' : 'img/stop.png'
-			}
+		videoActivo : true,
+		videoVelocidad: 200,
+		videoDistancia : 5,
+		videoAutoplay : true,
+		videoPausaIMG : 'img/pausa.png',
+		videoPlayIMG : 'img/play.png',
+		videoStopIMG : 'img/stop.png'
 	});
 	
 	$mapaShow.agregarPunto({latitud:lat,

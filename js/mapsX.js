@@ -149,10 +149,10 @@ Licencia: GNU General Public License
 			};
 			directionsService.route(request, function(response, status) {
 				if (status == google.maps.DirectionsStatus.OK) {
-				ALAT = response.routes[0].legs[0].start_location.lb;
-				ALON = response.routes[0].legs[0].start_location.mb;
-				BLAT = response.routes[0].legs[0].end_location.lb;
-				BLON = response.routes[0].legs[0].end_location.mb;
+				ALAT = response.routes[0].legs[0].start_location.ob;
+				ALON = response.routes[0].legs[0].start_location.pb;
+				BLAT = response.routes[0].legs[0].end_location.ob;
+				BLON = response.routes[0].legs[0].end_location.pb;
 					if(param.videoActivo === true){
 						$loader.css('display','block');
 						if($("#loaderMAPSX").length > 0){
